@@ -40,9 +40,9 @@ The goal is to build a functional prototype using **ROS 2** and **Python** that 
 ## 🔮 Roadmap
 
 * **Phase 1:** Research & Environment Setup (ROS 2 Humble).
-* [ ]**Phase 2:** Development of the Wall Detection Algorithm (RANSAC).
-* [ ]**Phase 3:** Implementation of Reflection Geometry Math.
-* [ ]**Phase 4:** Real-world testing with corner scenarios.
+* **Phase 2:** Development of the Wall Detection Algorithm (RANSAC).
+* **Phase 3:** Implementation of Reflection Geometry Math.
+* **Phase 4:** Real-world testing with corner scenarios.
 
 ---
 
