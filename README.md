@@ -17,7 +17,7 @@ By treating walls as "mirrors" for mmWave radar signals, this system intends to 
 
 ## The Concept: "Seeing" Around Corners
 
-Conventional radar filters out reflections to avoid "ghost targets." This project does the opposite—it captures them to create a virtual view of hidden areas.
+Conventional radar filters out reflections to avoid "ghost targets." This project does the opposite,it captures them to create a virtual view of hidden areas.
 
 
 
