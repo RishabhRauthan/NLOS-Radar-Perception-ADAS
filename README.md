@@ -11,7 +11,7 @@
 
 **NLOS (Non-Line-of-Sight) Radar Perception** is an embedded systems research project designed to solve one of the most dangerous scenarios in autonomous driving: **The Blind Corner.**
 
-Standard ADAS (Advanced Driver Assistance Systems) relies on direct Line-of-Sight. If a camera or LiDAR cannot see a hazard directly, it assumes the road is clear. This project aims to exploit **Multipath Propagation**usually considered "noise" in radar engineering—to mathematically reconstruct objects hidden behind obstacles.
+Standard ADAS (Advanced Driver Assistance Systems) relies on direct Line-of-Sight. If a camera or LiDAR cannot see a hazard directly, it assumes the road is clear. This project aims to exploit **Multipath Propagation**usually considered "noise" in radar engineering to mathematically reconstruct objects hidden behind obstacles.
 
 By treating walls as "mirrors" for mmWave radar signals, this system intends to detect, localize, and track vehicles before they are even visible to the human eye.
 
