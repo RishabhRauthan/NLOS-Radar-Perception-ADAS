@@ -53,7 +53,7 @@ This project is licensed under the **MIT License** - see the `LICENSE` file for 
 > **Note:** This repository is currently in the initial research and development phase.
 
 
-** Project Structure :
+## Project Structure :
 
 ```mermaid
 graph TD
