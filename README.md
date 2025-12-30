@@ -51,3 +51,56 @@ The goal is to build a functional prototype using **ROS 2** and **Python** that 
 This project is licensed under the **MIT License** - see the `LICENSE` file for details.
 
 > **Note:** This repository is currently in the initial research and development phase.
+
+
+** Project Structure :
+
+graph TD
+    %% Hardware Layer
+    subgraph Hardware ["Hardware / Simulation"]
+        Radar[("📡 TI AWR1642 Radar<br>(or Sim Node)")]
+    end
+
+    %% ROS 2 Middleware Layer
+    subgraph ROS2 ["ROS 2 System (The Brain)"]
+        direction TB
+        
+        %% Driver
+        Driver["📦 Radar Driver<br>(Publishes PointCloud2)"]
+        
+        %% The Core Algorithm
+        subgraph WallHack ["🔮 Project WallHack Core"]
+            Filter["1️⃣ Velocity Filter<br>(Separates Static vs Dynamic)"]
+            
+            WallFit["2️⃣ RANSAC Wall Detector<br>(Finds 'Mirror' Line)"]
+            
+            Solver["3️⃣ Geometry Solver<br>(Reflects 'Ghost' to Real Pos)"]
+        end
+    end
+
+    %% Visualization Layer
+    subgraph UI ["User Interface"]
+        Rviz[("🖥️ Rviz2 Visualization<br>(Map & Alerts)")]
+    end
+
+    %% Connections
+    Radar -->|USB / Serial| Driver
+    Driver -->|"/radar/raw_points"| Filter
+    
+    %% CORRECTED LINES BELOW (Added quotes)
+    Filter -->|"Static Points (v=0)"| WallFit
+    Filter -->|"Dynamic Points (v>0)"| Solver
+    
+    WallFit -.->|"Line Eq: ax+by+c=0"| Solver
+    
+    Solver -->|"/wallhack/hidden_threats"| Rviz
+    WallFit -->|"/wallhack/wall_marker"| Rviz
+
+    %% Styling
+    classDef hardware fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef ros fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    classDef ui fill:#fff3e0,stroke:#ef6c00,stroke-width:2px;
+    
+    class Radar hardware;
+    class Driver,Filter,WallFit,Solver ros;
+    class Rviz ui;
