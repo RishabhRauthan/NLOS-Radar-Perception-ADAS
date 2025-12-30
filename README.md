@@ -55,6 +55,7 @@ This project is licensed under the **MIT License** - see the `LICENSE` file for 
 
 ** Project Structure :
 
+```mermaid
 graph TD
     %% Hardware Layer
     subgraph Hardware ["Hardware / Simulation"]
@@ -87,7 +88,6 @@ graph TD
     Radar -->|USB / Serial| Driver
     Driver -->|"/radar/raw_points"| Filter
     
-    %% CORRECTED LINES BELOW (Added quotes)
     Filter -->|"Static Points (v=0)"| WallFit
     Filter -->|"Dynamic Points (v>0)"| Solver
     
@@ -104,3 +104,4 @@ graph TD
     class Radar hardware;
     class Driver,Filter,WallFit,Solver ros;
     class Rviz ui;
+```
