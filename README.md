@@ -1,7 +1,7 @@
-## NLOS Radar Perception for ADAS
+2## NLOS Radar Perception for ADAS
 
 
-> **"Giving autonomous vehicles a 'cheat code' to see around blind corners."**
+> **"Giving autonomous vehicles a cheat code to see around blind corners."**
 
 ![ROS 2](https://img.shields.io/badge/ROS2-Humble-blue?style=flat&logo=ros)
 ![Status](https://img.shields.io/badge/Status-Research%20Concept-orange)
@@ -13,31 +13,30 @@
 
 Standard ADAS (Advanced Driver Assistance Systems) relies on direct Line-of-Sight. If a camera or LiDAR cannot see a hazard directly, it assumes the road is clear. This project aims to exploit **Multipath Propagation**usually considered "noise" in radar engineering to mathematically reconstruct objects hidden behind obstacles.
 
-By treating walls as "mirrors" for mmWave radar signals, this system intends to detect, localize, and track vehicles before they are even visible to the human eye.
+By treating walls as mirrors for mmWave radar signals, this system intends to detect, localize, and track vehicles before they are even visible to the human eye.
 
-## The Concept: "Seeing" Around Corners
+## The Concept: Seeing Around Corners
 
-Conventional radar filters out reflections to avoid "ghost targets." This project does the opposite,it captures them to create a virtual view of hidden areas.
+Conventional radar filters out reflections to avoid ghost targets. This project does the opposite,it captures them to create a virtual view of hidden areas.
 
 
 
 ### The Physics
 1.  **Multipath Detection:** The radar signal hits a wall, bounces to a hidden car, bounces back to the wall, and returns to the sensor.
 2.  **Ghost Formation:** To the radar, the target appears to be *inside* or *behind* the wall.
-3.  **The "Mirror" Transformation:**
+3.  **The Mirror Transformation:**
     * The system will use **RANSAC** (Random Sample Consensus) to identify static walls.
     * It will then apply geometric reflection matrices to "unfold" the ghost coordinates, mapping them to their true location in the real world.
 
----
 
 ## Project Goals
 
 The goal is to build a functional prototype using **ROS 2** and **Python** that can:
 1.  Ingest point cloud data from a **TI mmWave Radar**.
 2.  Distinguish between static walls and dynamic hidden objects.
-3.  Visualize the "Hidden" traffic on a map in real-time.
+3.  Visualize the hidden traffic on a map in real-time.
 
-## 🔮 Roadmap
+## Roadmap
 
 * **Phase 1:** Research & Environment Setup (ROS 2 Humble).
 * **Phase 2:** Development of the Wall Detection Algorithm (RANSAC).
@@ -48,7 +47,7 @@ The goal is to build a functional prototype using **ROS 2** and **Python** that 
 
 ## License
 
-This project is licensed under the **MIT License** - see the `LICENSE` file for details.
+This project is licensed under the **MIT License** , see the `LICENSE` file for details.
 
 > **Note:** This repository is currently in the initial research and development phase.
 
@@ -59,7 +58,7 @@ This project is licensed under the **MIT License** - see the `LICENSE` file for 
 graph TD
     %% Hardware Layer
     subgraph Hardware ["Hardware / Simulation"]
-        Radar[("📡 TI AWR1642 Radar<br>(or Sim Node)")]
+        Radar[("TI AWR1642 Radar<br>(or Sim Node)")]
     end
 
     %% ROS 2 Middleware Layer
@@ -67,21 +66,21 @@ graph TD
         direction TB
         
         %% Driver
-        Driver["📦 Radar Driver<br>(Publishes PointCloud2)"]
+        Driver["Radar Driver<br>(Publishes PointCloud2)"]
         
         %% The Core Algorithm
-        subgraph WallHack ["🔮 Project WallHack Core"]
-            Filter["1️⃣ Velocity Filter<br>(Separates Static vs Dynamic)"]
+        subgraph WallHack ["Project WallHack Core"]
+            Filter["Velocity Filter<br>(Separates Static vs Dynamic)"]
             
-            WallFit["2️⃣ RANSAC Wall Detector<br>(Finds 'Mirror' Line)"]
+            WallFit[" RANSAC Wall Detector<br>(Finds 'Mirror' Line)"]
             
-            Solver["3️⃣ Geometry Solver<br>(Reflects 'Ghost' to Real Pos)"]
+            Solver["Geometry Solver<br>(Reflects 'Ghost' to Real Pos)"]
         end
     end
 
     %% Visualization Layer
     subgraph UI ["User Interface"]
-        Rviz[("🖥️ Rviz2 Visualization<br>(Map & Alerts)")]
+        Rviz[("Rviz2 Visualization<br>(Map & Alerts)")]
     end
 
     %% Connections
