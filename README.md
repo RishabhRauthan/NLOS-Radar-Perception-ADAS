@@ -1,4 +1,4 @@
-2## NLOS Radar Perception for ADAS
+## NLOS Radar Perception for ADAS
 
 
 > **"Giving autonomous vehicles a cheat code to see around blind corners."**
